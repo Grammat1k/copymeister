@@ -1,0 +1,37 @@
+{
+  "name": "reddit_copymeister",
+  "version": "1.0.0",
+  "description": "",
+  "main": "craw_test.js",
+  "scripts": {
+    "dev": "webpack --watch --mode development",
+    "start": "node dist/reddit_copymeister.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/signale": "^1.4.1",
+    "cross-env": "^7.0.2",
+    "download": "^8.0.0",
+    "ffmpeg-static": "^4.2.6",
+    "ffprobe-static": "^3.0.0",
+    "figures": "^3.2.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "locutus": "^2.0.11",
+    "moment": "^2.27.0",
+    "mysql2": "^2.1.0",
+    "reddit": "^1.1.0",
+    "signale": "^1.4.0",
+    "slash": "^3.0.0",
+    "tmp": "^0.2.1",
+    "to-readable-stream": "^2.1.0",
+    "url-exist": "^2.0.2",
+    "video-stitch": "^1.6.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "webpack-node-externals": "^2.5.0"
+  }
+}

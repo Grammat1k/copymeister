@@ -1,0 +1,172 @@
+{
+  "crawler": {
+    "reddit": {
+      "username": "c0pyme1ster",
+      "password": "IchFickeDeineMutterDuHurensohn",
+      "app_id": "QuYtjg3zNmEBCQ",
+      "app_secret": "tMCB_FXo8fpxjlevUi3YetnAW-4"
+    }
+  },
+  "database": {
+    "credentials": {
+      "host": "localhost",
+      "port": 3306,
+      "username": "root",
+      "password": "secret",
+      "charset": "utf8mb4",
+      "collation": "utf8mb4_unicode_ci"
+    },
+    "recent_clips": {
+      "purge_after": "-2 months"
+    }
+  },
+  "youtube_channels": {
+    "main": {
+      "authentication": {
+        "type": "oauth"
+      },
+      "credentials": {
+        "client_id": "12345",
+        "client_secret": "psssst!password"
+      }
+    }
+  },
+  "series": {
+    "IdiotsFightingThings": {
+      "youtube": {
+        "channel": "asdf",
+        "playlist": "ytPlaylistId"
+      },
+      "sources": [
+        {
+          "type": "reddit",
+          "source": "idiotsfightingthings",
+          "sort": "top",
+          "timespan": "week",
+          "duplicate_check": [
+            {
+              "checker": "id",
+              "timespan": "-3 days"
+            }
+          ]
+        },
+        {
+          "type": "reddit",
+          "source": "instant_regret",
+          "sort": "top",
+          "timespan": "week",
+          "duplicate_check": [
+            {
+              "checker": "id",
+              "timespan": "-3 days"
+            }
+          ]
+        },
+        {
+          "type": "reddit",
+          "source": "instantkarma",
+          "sort": "top",
+          "timespan": "week",
+          "duplicate_check": [
+            {
+              "checker": "id",
+              "timespan": "-3 days"
+            }
+          ]
+        },
+        {
+          "type": "reddit",
+          "source": "winstupidprizes",
+          "sort": "top",
+          "timespan": "week",
+          "duplicate_check": [
+            {
+              "checker": "id",
+              "timespan": "-3 days"
+            }
+          ]
+        }
+      ],
+      "title": "Best Funny Video Clips Compilation {year} #{no}",
+      "description": [
+        "This is the video description. It contains all sorts of words, sometimes even numbers! Often used to optimise the video's SEO score.",
+        "Use those first lines for a small excerpt  of the video's contents.",
+        "",
+        "\ud83d\uded2 Merch",
+        "BUY ME MERCH NOW!",
+        "",
+        "🎥 Clips used in this video:",
+        "{{#list clips}}",
+        "- {{timestamp}} {{short_url}}",
+        "{{/list}}",
+        "",
+        "Moar SEO stuff. @see FailArmy's videos: https://www.youtube.com/watch?v=imHUmZeAaqQ (super useful!)"
+      ],
+      "duration": 10.5,
+      "max_clip_length": 45,
+      "min_clip_length": 5,
+      "publish": {
+        "frequency": "weekly",
+        "weekday": "friday",
+        "time": "17:00",
+        "timezone": "UTC"
+      },
+      "meta": {
+        "keywords": [
+          "fail",
+          "fails",
+          "best fails",
+          "epic fails",
+          "funny fails",
+          "memes",
+          "compilation",
+          "comp",
+          "video clips",
+          "viral",
+          "try not to laugh",
+          "fails compilation 2020",
+          "pranks",
+          "reddit",
+          "reddit compilation",
+          "dank memes"
+        ],
+        "category": "Entertainment",
+        "video_language": "en_US",
+        "audience": "kids-friendly",
+        "video_template": {
+          "intro": {
+            "media": {
+              "file": "data/video_templates/intro/intro.mp4",
+              "type": "video"
+            },
+            "after_first_clip": true
+          },
+          "outro": {
+            "media": {
+              "file": "data/video_templates/outro/outro.mp4",
+              "type": "video"
+            }
+          },
+          "overlays": [
+            {
+              "position": {
+                "x": 50,
+                "y": 100
+              },
+              "media": {
+                "file": "data/video_templates/overlays/logo1.png",
+                "type": "image"
+              }
+            }
+          ],
+          "background": {
+            "media": {
+              "file": "data/video_templates/overlays/background.mp4",
+              "type": "video"
+            }
+          }
+        }
+      }
+    }
+  }
+}
