@@ -1,9 +1,19 @@
-import mysql from 'mysql2';
+import config from '@/common/Config';
+import knex from 'knex';
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'copymeister',
+const {host, port, user, password, database, charset, timeout} = config.database.credentials;
+
+const db = knex({
+  client: 'mysql2',
+  connection: {
+    host,
+    port,
+    user,
+    password,
+    database,
+    charset,
+    connectionTimeout: timeout,
+  },
 });
 
-export default connection;
+export default db;

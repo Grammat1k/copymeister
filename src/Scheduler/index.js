@@ -1,17 +1,21 @@
+import {exec} from 'child_process';
+import {date} from 'locutus/php/datetime';
+import path from 'path';
 import config from '../common/Config';
 import Logger from '../common/Support/Logger';
-import { date } from 'locutus/php/datetime';
-import {exec} from 'child_process';
-import path from 'path';
 
 const logger = Logger.scope('Scheduler');
 
-logger.info(`Checking scheduled videos for today: ${date('l, d. F Y')}.`)
+logger.info(`Checking scheduled videos for today: ${date('l, d. F Y')}.`);
 
 let toBeProcessed = 0;
 
 for (const seriesId in config.series) {
-  const { publish } = config.series[seriesId];
+  if (!config.series.hasOwnProperty(seriesId)) {
+    continue;
+  }
+
+  const {publish} = config.series[seriesId];
 
   if (
     !(

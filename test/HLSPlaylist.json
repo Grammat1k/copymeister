@@ -1,0 +1,194 @@
+{
+  "items": {
+    "PlaylistItem": [],
+    "StreamItem": [
+      {
+        "attributes": {
+          "attributes": {
+            "bandwidth": 366000,
+            "average-bandwidth": 350000,
+            "resolution": [
+              400,
+              230
+            ],
+            "closed-captions": "NONE",
+            "codecs": "avc1.42001e,mp4a.40.2",
+            "audio": "0"
+          }
+        },
+        "properties": {
+          "byteRange": null,
+          "daiPlacementOpportunity": null,
+          "date": null,
+          "discontinuity": null,
+          "duration": null,
+          "title": null,
+          "uri": "HLS_224.m3u8"
+        }
+      },
+      {
+        "attributes": {
+          "attributes": {
+            "bandwidth": 572000,
+            "average-bandwidth": 548000,
+            "resolution": [
+              480,
+              276
+            ],
+            "closed-captions": "NONE",
+            "codecs": "avc1.42001e,mp4a.40.2",
+            "audio": "0"
+          }
+        },
+        "properties": {
+          "byteRange": null,
+          "daiPlacementOpportunity": null,
+          "date": null,
+          "discontinuity": null,
+          "duration": null,
+          "title": null,
+          "uri": "HLS_270.m3u8"
+        }
+      },
+      {
+        "attributes": {
+          "attributes": {
+            "bandwidth": 461000,
+            "average-bandwidth": 447000,
+            "resolution": [
+              400,
+              230
+            ],
+            "closed-captions": "NONE",
+            "codecs": "avc1.42001e,mp4a.40.2",
+            "audio": "1"
+          }
+        },
+        "properties": {
+          "byteRange": null,
+          "daiPlacementOpportunity": null,
+          "date": null,
+          "discontinuity": null,
+          "duration": null,
+          "title": null,
+          "uri": "HLS_224.m3u8"
+        }
+      },
+      {
+        "attributes": {
+          "attributes": {
+            "bandwidth": 667000,
+            "average-bandwidth": 645000,
+            "resolution": [
+              480,
+              276
+            ],
+            "closed-captions": "NONE",
+            "codecs": "avc1.42001e,mp4a.40.2",
+            "audio": "1"
+          }
+        },
+        "properties": {
+          "byteRange": null,
+          "daiPlacementOpportunity": null,
+          "date": null,
+          "discontinuity": null,
+          "duration": null,
+          "title": null,
+          "uri": "HLS_270.m3u8"
+        }
+      }
+    ],
+    "IframeStreamItem": [
+      {
+        "attributes": {
+          "attributes": {
+            "bandwidth": 38387,
+            "average-bandwidth": 28079,
+            "resolution": [
+              400,
+              230
+            ],
+            "codecs": "avc1.42001e",
+            "uri": "HLS_224-iframe.m3u8"
+          }
+        },
+        "properties": {
+          "byteRange": null,
+          "daiPlacementOpportunity": null,
+          "date": null,
+          "discontinuity": null,
+          "duration": null,
+          "title": null
+        }
+      },
+      {
+        "attributes": {
+          "attributes": {
+            "bandwidth": 54946,
+            "average-bandwidth": 42020,
+            "resolution": [
+              480,
+              276
+            ],
+            "codecs": "avc1.42001e",
+            "uri": "HLS_270-iframe.m3u8"
+          }
+        },
+        "properties": {
+          "byteRange": null,
+          "daiPlacementOpportunity": null,
+          "date": null,
+          "discontinuity": null,
+          "duration": null,
+          "title": null
+        }
+      }
+    ],
+    "MediaItem": [
+      {
+        "attributes": {
+          "attributes": {
+            "type": "AUDIO",
+            "group-id": "0",
+            "name": "audio 0",
+            "autoselect": true,
+            "default": true,
+            "uri": "HLS_AUDIO_64_K.m3u8"
+          }
+        },
+        "properties": {
+          "byteRange": null,
+          "daiPlacementOpportunity": null,
+          "date": null,
+          "discontinuity": null,
+          "duration": null,
+          "title": null
+        }
+      },
+      {
+        "attributes": {
+          "attributes": {
+            "type": "AUDIO",
+            "group-id": "1",
+            "name": "audio 1",
+            "autoselect": true,
+            "default": true,
+            "uri": "HLS_AUDIO_160_K.m3u8"
+          }
+        },
+        "properties": {
+          "byteRange": null,
+          "daiPlacementOpportunity": null,
+          "date": null,
+          "discontinuity": null,
+          "duration": null,
+          "title": null
+        }
+      }
+    ]
+  },
+  "properties": {
+    "version": 4
+  }
+}
