@@ -1,15 +1,7 @@
 export default class Source {
-  constructor() {
-    if (new.target === Source) {
-      throw new TypeError(`Cannot construct ${new.target.constructor.name} instances directly!`);
-    }
-  }
+  _postData = null;
 
-  async retriveMetaData() {
-    throw new TypeError('Cannot call abstract method directly!');
-  }
-
-  async download() {
-    throw new TypeError('Cannot call abstract method directly!');
+  constructor(postData) {
+    this._postData = postData;
   }
 }

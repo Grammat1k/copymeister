@@ -5,7 +5,7 @@ export default class Downloader {
     }
   }
 
-  async download() {
+  static async download() {
     throw new TypeError('Cannot call abstract method directly!');
   }
 }

@@ -34,7 +34,7 @@ for (const seriesId in config.series) {
 
   cp.on('close', (number) => {
     if (number === 0) {
-      logger.success({prefix: `[${seriesId}]`, message: `Videocreator finished.`});
+      logger.success({prefix: `[${seriesId}]`, message: `Video creator finished.`});
     } else {
       logger.error({prefix: `[${seriesId}]`, message: `VideoCreator exited with an error :-/.`});
     }

@@ -10,7 +10,10 @@ export default class RedditCrawler {
     });
   }
 
-  async getPosts(subreddits, limit = Number.MAX_SAFE_INTEGER) {
+  async getVideoPosts(subreddits, {
+    preFilter = () => true,
+    limit = Number.MAX_SAFE_INTEGER,
+  } = {}) {
     if (!Array.isArray(subreddits)) subreddits = [subreddits];
 
     const ret = {};
@@ -26,9 +29,13 @@ export default class RedditCrawler {
           timespan,
           sort,
           limit,
-        }).then(results => {
-          ret[subreddit.name] = results;
         })
+          .then(results => {
+            ret[subreddit.name] = results.filter(post => {
+              if (post.data.is_self) return false; // is_self is true on a text post
+              return preFilter(post);
+            });
+          })
       }
       )
     );
