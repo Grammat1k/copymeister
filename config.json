@@ -43,49 +43,31 @@
           "type": "reddit",
           "source": "idiotsfightingthings",
           "sort": "top",
-          "timespan": "week",
-          "duplicate_check": [
-            {
-              "checker": "id",
-              "timespan": "-3 days"
-            }
-          ]
+          "timespan": "week"
         },
         {
           "type": "reddit",
           "source": "instant_regret",
           "sort": "top",
-          "timespan": "week",
-          "duplicate_check": [
-            {
-              "checker": "id",
-              "timespan": "-3 days"
-            }
-          ]
+          "timespan": "week"
         },
         {
           "type": "reddit",
           "source": "instantkarma",
           "sort": "top",
-          "timespan": "week",
-          "duplicate_check": [
-            {
-              "checker": "id",
-              "timespan": "-3 days"
-            }
-          ]
+          "timespan": "week"
         },
         {
           "type": "reddit",
           "source": "winstupidprizes",
           "sort": "top",
-          "timespan": "week",
-          "duplicate_check": [
-            {
-              "checker": "id",
-              "timespan": "-3 days"
-            }
-          ]
+          "timespan": "week"
+        }
+      ],
+      "duplicate_checks": [
+        {
+          "checker": "id",
+          "timespan": "-7 days"
         }
       ],
       "title": "Best Funny Video Clips Compilation {year} #{no}",
@@ -104,8 +86,9 @@
         "Moar SEO stuff. @see FailArmy's videos: https://www.youtube.com/watch?v=imHUmZeAaqQ (super useful!)"
       ],
       "duration": 10.5,
-      "max_clip_length": 45,
-      "min_clip_length": 5,
+      "min_audio_segment_length": 70,
+      "max_clip_length": 60,
+      "min_clip_length": 3,
       "publish": {
         "frequency": "weekly",
         "weekday": "friday",
@@ -133,53 +116,38 @@
         ],
         "category": "Entertainment",
         "video_language": "en_US",
-        "audience": "kids-friendly",
-        "segments": [
-          {
-            "type": "video",
-            "duration": 1,
-            "music": false
+        "audience": "kids-friendly"
+      },
+      "video_template": {
+        "intro": {
+          "media": {
+            "file": "data/video_templates/intro/intro.mp4",
+            "type": "video"
           },
+          "after_first_clip": true
+        },
+        "outro": {
+          "media": {
+            "file": "data/video_templates/outro/outro.mp4",
+            "type": "video"
+          }
+        },
+        "overlays": [
           {
-            "type": [
-              "silent-videos",
-              "gifs"
-            ],
-            "duration": "fill",
-            "music": true
+            "position": {
+              "x": 50,
+              "y": 100
+            },
+            "media": {
+              "file": "data/video_templates/overlays/logo1.png",
+              "type": "image"
+            }
           }
         ],
-        "video_template": {
-          "intro": {
-            "media": {
-              "file": "data/video_templates/intro/intro.mp4",
-              "type": "video"
-            },
-            "after_first_clip": true
-          },
-          "outro": {
-            "media": {
-              "file": "data/video_templates/outro/outro.mp4",
-              "type": "video"
-            }
-          },
-          "overlays": [
-            {
-              "position": {
-                "x": 50,
-                "y": 100
-              },
-              "media": {
-                "file": "data/video_templates/overlays/logo1.png",
-                "type": "image"
-              }
-            }
-          ],
-          "background": {
-            "media": {
-              "file": "data/video_templates/overlays/background.mp4",
-              "type": "video"
-            }
+        "background": {
+          "media": {
+            "file": "data/video_templates/overlays/background.mp4",
+            "type": "video"
           }
         }
       }

@@ -8,7 +8,8 @@ let config = {};
 
 try {
   config = eval('require')('../config.json');
-  logger.complete(`Config loaded. Found ${config.series.length} serie${config.series.length === 1 ? 's' : ''}.`);
+
+  logger.complete(`Config loaded. Found ${Object.keys(config.series).length} series.`);
 } catch {
   logger.error('Failed to load config!');
   process.exit(1);

@@ -1,34 +1,18 @@
-import fs from 'fs';
-import m3u8 from 'm3u8';
+
 
 export default class ParsedHlsPlaylist {
-  async parse(file) {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const parser = m3u8.createStream();
-        const file = fs.createReadStream(file);
-        file.pipe(parser);
-
-        parser.on('m3u', function (m3u) {
-          resolve(m3u);
-        });
-      } catch (err) {
-        reject(err);
-      }
-    })
-      .then((m3u) => {
-        this._m3uData = m3u;
-      });
+  constructor(data, m3u8Uri) {
+    this._m3u8Data = data;
+    this._m3u8BaseUri = m3u8Uri.replace(/HLSPlaylist\.m3u8.*/, '');
   }
 
   getHighestQualityVideo() {
-    if (!this._m3uData.items.StreamItem) {
+    if (!this._m3u8Data.items.StreamItem) {
       return null;
     }
 
-    const resolution = (items) => items.reduce((a, b) => a * b);
-
-    return items.reduce(
+    const resolution = (res) => res[0] * res[1];
+    return this._m3u8Data.items.StreamItem.reduce(
       (previousValue, currentValue) =>
         resolution(previousValue) > resolution(currentValue)
           ? previousValue
@@ -36,7 +20,39 @@ export default class ParsedHlsPlaylist {
     );
   }
 
-  getHighestQualityAudio(items) {
+  getHighestQualityVideoSourceUri() {
+    return this.getVideoSourceUri(
+      this.getHighestQualityVideo()
+    );
+  }
 
+  hasAudio() {
+    return this._m3u8Data.items.MediaItem && this._m3u8Data.items.MediaItem.length;
+  }
+
+  getHighestQualityAudio() {
+    if (!this.hasAudio()) {
+      return null;
+    }
+
+    return this._m3u8Data.items.MediaItem[this._m3u8Data.items.MediaItem.length - 1];
+  }
+
+  getHighestQualityAudioSourceUri() {
+    if (!this.hasAudio()) {
+      return null;
+    }
+
+    return this.getAudioSourceUri(this.getHighestQualityAudio());
+  }
+
+  getVideoSourceUri(item) {
+    return this._m3u8BaseUri + item.properties.uri.split('.m3u8')[0] + '.ts';
+  }
+
+  getAudioSourceUri(item) {
+    return this._m3u8BaseUri + item.attributes.attributes.uri.split('.m3u8')[0] + '.aac';
   }
 }
+
+

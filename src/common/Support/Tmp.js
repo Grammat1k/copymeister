@@ -1,4 +1,6 @@
 import tmp from 'tmp';
+import fs from 'fs';
+import rimraf from 'rimraf';
 
 export default class Tmp {
   static createTemporaryFile(extension, opts = {}) {

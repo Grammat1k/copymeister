@@ -35,12 +35,12 @@ export default class AudioVideoMuxer {
             fs.unlinkSync(audio);
           }
 
-          resolve(target, stdout, stderr);
+          resolve([target, stdout, stderr]);
         })
         .on('error', (err, stdout, stderr) => {
           logger.error(`Error while transcoding [${path.basename(target)}].`, err);
 
-          reject(err, stdout, stderr);
+          reject([target, stdout, stderr]);
         })
         .videoCodec('libx264')
         .fps(30)

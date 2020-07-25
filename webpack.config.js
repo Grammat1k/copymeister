@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     video_creator: './src/VideoCreator/index.js',
     scheduler: './src/Scheduler/index.js',
+    test: './src/test/index.js',
   },
   target: 'node',
   output: {

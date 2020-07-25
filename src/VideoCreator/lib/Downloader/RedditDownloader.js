@@ -4,41 +4,63 @@ import Tmp from '@/common/Support/Tmp';
 import Downloader from '@/VideoCreator/lib/Downloader/Downloader';
 import AudioVideoMuxer from '@/VideoCreator/lib/Downloader/Muxers/AudioVideoMuxer';
 import fs from 'fs';
+import HlsPlaylistParser from '@/VideoCreator/lib/Downloader/Parsers/HlsPlaylistParser';
+import slash from 'slash';
 
 const logger = Logger.scope('Download/Reddit');
 
-class RedditDownloader extends Downloader {
-  async download(post) {
-    if (post.media.reddit_video.is_gif) {
-      return this.downloadGif(post);
+export default class RedditDownloader extends Downloader {
+  static async download(post) {
+    if (post.reddit_video.is_gif) {
+      return RedditDownloader.downloadGif(post);
     }
 
-    return this.downloadVideo(post);
+    return RedditDownloader.downloadVideo(post);
   }
 
-  async downloadGif(post) {
+  static async downloadGif(post) {
 
   }
 
-  async downloadVideo(post) {
-    const videoUri = post.reddit_video.fallback_url;
-    const audioUri = videoUri.split('DASH_')[0] + `DASH_audio.mp4`;
+  // series: IdiotsFightingThings [r/idiotsfightingthings, r/instant_regret, r/instantkarma, r/winstupidprizes]
+  // -> video_duration: 10.5 min
+  //
 
-    const [videoBuffer, audioBuffer] = Promise.all([
-      Download.downloadFromUri(videoUri, `${post.name}/video`),
-      Download.downloadFromUri(audioUri, `${post.name}/audio`),
+  // posts >
+
+  // posts
+  // type (reddit[gif(videos with no audio, gifs), video], youtube, giphy, gfycat) -> .mp4
+  // post.identifier => t3_123456
+  // post.hasAudio => boolean
+  // post.duration => number (rounded seconds)
+
+
+
+
+  static async downloadVideo(post) {
+    const playlistParser = new HlsPlaylistParser();
+    await playlistParser.load(post.reddit_video.hls_url);
+    const playlist = await playlistParser.parse();
+
+    // @todo move this to crawler.
+    if (!playlist.hasAudio()) return null;
+
+    const [videoBuffer, audioBuffer] = await Promise.all([
+      Download.downloadFromUri(playlist.getHighestQualityVideoSourceUri(), `${post.name}/video`, logger),
+      Download.downloadFromUri(playlist.getHighestQualityAudioSourceUri(), `${post.name}/audio`, logger),
     ]);
 
-    const videoPath = this.createTemporaryFile('.mp4');
-    const audioPath = this.createTemporaryFile('.mp4');
+    const videoPath = Tmp.createTemporaryFile('.ts');
+    const audioPath = Tmp.createTemporaryFile('.aac');
 
     fs.writeFileSync(videoPath, videoBuffer);
     fs.writeFileSync(audioPath, audioBuffer);
 
     const [target] = await (new AudioVideoMuxer().mux(videoPath, audioPath, Tmp.createTemporaryFile('.mp4')));
 
-    return target;
+    return {
+      ...post,
+      video_path: slash(target)
+    };
   }
-
-
 }

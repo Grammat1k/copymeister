@@ -1,0 +1,42 @@
+[
+  {
+    "attributes": {
+      "attributes": {
+        "type": "AUDIO",
+        "group-id": "0",
+        "name": "audio 0",
+        "autoselect": true,
+        "default": true,
+        "uri": "HLS_AUDIO_64_K.m3u8"
+      }
+    },
+    "properties": {
+      "byteRange": null,
+      "daiPlacementOpportunity": null,
+      "date": null,
+      "discontinuity": null,
+      "duration": null,
+      "title": null
+    }
+  },
+  {
+    "attributes": {
+      "attributes": {
+        "type": "AUDIO",
+        "group-id": "1",
+        "name": "audio 1",
+        "autoselect": true,
+        "default": true,
+        "uri": "HLS_AUDIO_160_K.m3u8"
+      }
+    },
+    "properties": {
+      "byteRange": null,
+      "daiPlacementOpportunity": null,
+      "date": null,
+      "discontinuity": null,
+      "duration": null,
+      "title": null
+    }
+  }
+]

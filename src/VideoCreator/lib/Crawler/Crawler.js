@@ -27,7 +27,6 @@ export default class Crawler {
           if (post.media.reddit_video.is_gif) continue; // only real videos
           if (post.media.reddit_video.duration > durationLimit) continue;
           if (post.over_18) continue;
-          if (!await this.videoContainsAudio(post.media.reddit_video.fallback_url)) continue; // only videos with sound
           // @todo duplication check
 
           posts.push({
@@ -38,7 +37,9 @@ export default class Crawler {
               fallback_url: post.media.reddit_video.fallback_url,
               scrubber_media_url: post.media.reddit_video.scrubber_media_url,
               duration: post.media.reddit_video.duration,
-            }
+              hls_url: post.media.reddit_video.hls_url,
+              is_gif: post.media.reddit_video.is_gif,
+            },
           });
         }
 
