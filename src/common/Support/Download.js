@@ -1,7 +1,5 @@
 import download from 'download';
 
-
-
 export default class Download {
   /**
    * Downloads a single file from an URI.
@@ -17,7 +15,7 @@ export default class Download {
     return download(uri)
       .on('request', (request) => {
         logger.start({prefix: `[${identifier}]`, message: `Starting download of [${uri}].`});
-        start_time = Date.now()
+        start_time = Date.now();
       })
       .on('downloadProgress', (progress) => {
         return;

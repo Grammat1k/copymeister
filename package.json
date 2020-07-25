@@ -30,9 +30,11 @@
     "tmp": "^0.2.1",
     "to-readable-stream": "^2.1.0",
     "url-exist": "^2.0.2",
+    "url-inspector": "^2.4.3",
     "video-stitch": "^1.6.0",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "youtube-dl": "^3.0.2"
   },
   "devDependencies": {
     "webpack-node-externals": "^2.5.0"

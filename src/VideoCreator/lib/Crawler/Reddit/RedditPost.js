@@ -13,6 +13,7 @@ export default class RedditPost {
     this.subreddit = _postData.subreddit;
     this.author = _postData.author;
     this.sourceType = this.getSourceType(_postData);
+    this.source;
   }
 
   isCrosspost() {
